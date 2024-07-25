@@ -1,43 +1,48 @@
 
 let tasks = [];
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     const storedtasks = JSON.parse(localStorage.getItem("tasks"))
-
-//     if (storedtasks) {
-//         storedtasks.forEach((task) => tasks.push(task));
-//     }
-// }
-// // const saveTasks = () => {
-//     localStorage.setItem("tasks", JSON.stringify(tasks));
-// }
+document.addEventListener('DOMContentLoaded', () => {
+    const storedtasks = JSON.parse(localStorage.getItem("tasks"))
+    
+    if (storedtasks) {
+        storedtasks.forEach((task) => tasks.push(task));
+    }
+    updateTaskList();
+    updatestats();
+    
+})
+ const saveTasks = () => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
 
 
 const addTask = () => {
     const taskInput = document.getElementById("taskInput");
     const text = taskInput.value.trim();
     if (text) {
-        tasks.push({text: text, completed: false });
+        tasks.push({text: text, completed: false});
         updateTaskList();
         
     }
-    console.log(tasks);
+    
     updatestats();
-    // saveTasks();
+    saveTasks();
 
 };
 
 const toggleTaskComplete = (index) => {
     tasks[index].completed =!tasks[index].completed;
+    
+    updateTaskList();
     updatestats();
-    // saveTasks();
+    saveTasks();
     
 }
 const deleteTask = (index) => {
 tasks.splice(index, 1);
     updateTaskList();
     updatestats();
-    // saveTasks();
+    saveTasks();
 }
 
 const editTask = (index) => {
@@ -46,13 +51,17 @@ const editTask = (index) => {
     tasks.splice(index, 1);
     updateTaskList();
     updatestats();
-    // saveTasks();
+    saveTasks();
 };
 
 const updatestats = () => {
     const completedTasks = tasks.filter(task => task.completed).length;
     const taskCount = tasks.length;
-    const progress = (completedTasks / taskCount) * 100;
+    let progress = (completedTasks / taskCount) * 100;
+    if (isNaN(progress)) {
+        progress = 0;
+    }
+    
     const progressBar = document.getElementById("progress");
     progressBar.style.width = `${progress}%`;
     document.getElementById("numbers").innerText = `${completedTasks}/${taskCount}`;
@@ -88,5 +97,6 @@ const updateTaskList = () => {
 document.getElementById("newTask").addEventListener("click",function(e){
     e.preventDefault();
     addTask();
+    
     document.getElementById("taskInput").value = "";
 })
