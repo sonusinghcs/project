@@ -18,10 +18,11 @@ body{
     background-position: center center;
     background-attachment: fixed;
     background-repeat: no-repeat;
-    color: var(--text);
+    color: black
 }
 .container{
     display: flex;
+    
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -32,8 +33,10 @@ body{
 }
 .stats-container{
     padding: 30px;
+    backdrop-filter: blur(3px);
     border-radius: 20px;
-    border:2px solid var(--purple) ;
+    border: 2px solid rgb(23, 47, 75);
+    box-shadow: 5px 5px 15px 8px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: space-between;
     width:100%;
@@ -41,13 +44,16 @@ body{
    
 }
 
+
+
+
 .details{
     width: 100%;
 }
 #progress{
     width: 50%;
     height: 10px;
-    background-color: var(--teal);
+    background-color: rgb(11, 124, 90);
     border-radius: 10px;
     transition: all 0.3s ease;
 }
@@ -56,6 +62,7 @@ body{
     width: 100%;
     height: 10px;
     background-color: var(--secondaryBackground);
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     margin-top: 20px;
 }
@@ -66,7 +73,9 @@ body{
     width: 100px;
     height: 100px;
     text-align: center;
-    background-color: var(--purple);
+    backdrop-filter: blur(200px);
+    border: 2px solid rgb(48, 65, 70);
+    box-shadow: 3px 8px 20px 5px rgba(0, 0, 0, 0.5);
     display: flex;
     align-items:center;
     border-radius:50% ;
@@ -74,6 +83,7 @@ body{
     font-weight: bold;
     padding:30px ;
 }
+
 
 form{
     margin-top: 60px;
@@ -86,13 +96,16 @@ input{
     flex: 1;
     padding: 16px;
     border-radius: 5px;
-    background: var(--secondaryBackground);
-    border: 1px solid var(--purple);
-    margin-bottom: 20px;
+    backdrop-filter: blur(20px);
+    border: 2px solid rgb(53, 96, 108);
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.5);
+    background-color: transparent;
+    /* margin-bottom: 20px; */
     border-radius: 10px;
     outline: none;
-    color: var(--text);
+    color: black;
 }
+
 button{
     padding: 16px;
     width: 50px;
@@ -101,8 +114,9 @@ button{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--purple);
-    color: var(--text);
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+    border:2px solid rgb(42, 87, 117);
     font-size: 30px;
     font-weight: bold;
     outline: none;
@@ -110,15 +124,22 @@ button{
 #task-list{
     display: flex;
     flex-direction: column;
+    
+    width: 100%;
     gap: 10px;
     margin-top: 30px;
-    width: 100%;
+    
     list-style: none;
+    
 }
+
 .taskItem{
     width: 100%;
     display: flex;
-    background-color: var(--secondaryBackground);
+    
+    backdrop-filter: blur(5px);
+    border: 2px solid rgb(50, 89, 138);
+    box-shadow: 5px 5px 15px 8px rgba(0, 0, 0, 0.5); 
     padding: 10px;
     border-radius:10px ;
     justify-content: space-between;
@@ -127,8 +148,11 @@ button{
 .task{
     display: flex;
     align-items: center;
-    gap: 10px;
+  
+    font-size: 18px;
+    gap: 20px;
 }
+
 .task input{
     display: flex;
     width: 20px;
