@@ -1,3 +1,4 @@
+import { key } from './config.js';
 function magic(){
     function getUserLocation() {
         return new Promise((resolve, reject) => {
@@ -22,7 +23,7 @@ function magic(){
 
     // Function to get weather data using the coordinates
     async function getWeather(lat, lon) {
-        const apiKey = 'a36ba90c9896322eef1905c612c3068b'; 
+        const apiKey = key; 
         const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
         const response = await fetch(url);
@@ -127,7 +128,7 @@ function jadu(city){
             const city = a.name;
             jadu(city);
 
-            
+             
             // Display weather data
             displayWeather(weatherData);
         } catch (error) {
@@ -139,4 +140,10 @@ function jadu(city){
     // Call the async function to show the weather
     showWeather();
 };
+window.getWeather = getWeather;
+window.displayWeather = displayWeather;
+window.displayHourlyForecast = displayHourlyForecast;
+window.showImage = showImage;
+
+window.magic = magic;
 
